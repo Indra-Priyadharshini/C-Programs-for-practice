@@ -1,0 +1,31 @@
+#include<stdio.h>
+int isprime(int); // Function Declaration or Function Prototype
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    if(n==1||n==0)
+    {
+        printf("%d is neither prime nor composite",n);
+    }
+    else
+    {
+    if(isprime(n))
+    printf("%d is prime",n);
+    else
+    printf("%d is not prime",n);
+    return 0;
+    }
+}
+int isprime(int x)
+{
+    int i=2;
+    while(i<x/2)
+    {
+      if(x%i==0)
+      return 0;
+      else
+      i=i+1;
+    }
+    return 1;
+}
