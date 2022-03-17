@@ -1,0 +1,40 @@
+//ANAGRAM
+#include<stdio.h>
+int main()
+{
+    char s1[30],s2[30];
+    fgets(s1,30,stdin);
+    fgets(s2,30,stdin);
+    int x=checkAnagram(s1,s2);
+    if(x)
+    printf("Given Strings are Anagram");
+    else
+    printf("Given Strings are not Anagram");
+    return 0;
+}
+int checkAnagram(char *str1,char *str2)
+{
+    int r=0,i;
+    int c1[256]={0};
+    int c2[256]={0};
+    if(strlen(str1)!=strlen(str2))
+    return 0;
+    else
+    return 1;
+    for(i=0;*(str1+i)!='\0';i++)
+    c1[*(str1+i)]++;
+    for(i=0;*(str2+i)!='\0';i++)
+    c2[*(str2+i)]++;
+    for(i=0;*(str1+i)!='\0';i++)
+    {
+        if(c1[i]!=c2[i])
+        {
+            r=0;
+            break;
+        }
+        else
+            r=1;
+    }
+    
+    return r;
+}
