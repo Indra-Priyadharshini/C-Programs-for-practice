@@ -1,0 +1,16 @@
+int main(void) {
+	// your code goes here
+int first, second, sum, i,n;
+scanf("%d",&n);
+first=0;
+second=1;
+printf("%d %d",first,second);
+for(i=1;i<=n-2;i++)
+{
+    sum=first+second;
+    printf("\t%d",sum);
+    first=second;
+    second=sum;
+}
+return 0;
+}
