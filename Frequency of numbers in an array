@@ -1,0 +1,33 @@
+#include<stdio.h>
+int main()
+{
+int a[10];
+int i,j,counter=0,freq[10];
+for(i=0;i<5;i++)
+{
+scanf("%d",&a[i]);
+freq[i]=-1; // initializing frequency array with -1
+}
+for(i=0;i<5;i++)
+{
+for(j=i+1;j<5;j++)
+{
+if(a[i]==a[j])
+{
+counter++; // if there is a match, increment counter
+freq[j]=0; // make the corresponding second element's place in frequency array by 0 (Note j there)
+}
+}
+if(freq[i]!=0) // If there is a zero, it is the second time match. Otherwise assign the count to freq array
+{
+freq[i]=counter;
+}
+}
+for(i=0;i<5;i++)
+{
+if(freq[i]!=0) // Just print the values and occurrences for positions with values, if zero, they are second or thir matches
+{
+printf("\n%d is occuring %d times",a[i],freq[i]);
+}
+}
+}
