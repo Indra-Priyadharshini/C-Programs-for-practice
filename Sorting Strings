@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include<string.h>
+int main(void) {
+	// your code goes here
+	char a[5][20];
+	int i;
+	for(i=0;i<4;i++)
+	{
+	    fgets(a[i],20,stdin);
+	}
+	/*for(i=0;i<4;i++)
+	{
+	    printf("\n%s",a[i]);
+	}*/
+	for(i=0;i<4;i++)
+	{
+	    for(int j=i+1;j<4;j++)
+	    if(strcmp(a[i],a[j])>0)
+	    {
+	        char t[20]=" ";
+	        strcpy(t,a[i]);
+	        strcpy(a[i],a[j]);
+	        strcpy(a[j],t);
+	    }
+	}
+		for(i=0;i<4;i++)
+	{
+	    printf("\n%s",a[i]);
+	}
+	return 0;
+	
+}
