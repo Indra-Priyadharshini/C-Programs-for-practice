@@ -1,0 +1,17 @@
+#include <stdio.h>
+void calcSquare(int); // Function Prototype
+int main() {
+	// your code goes here
+	int x,result;
+	scanf("%d",&x);
+	calcSquare(x); //Function call x-Actual argument or parameters
+	calcSquare(10);
+	//printf("%d is square of %d",result,x);
+	//printf("Square is %d",calcSquare(5));
+	return 0;
+}
+void calcSquare(int a)//Function Definition Formal Parameters or Formal Arguments
+{
+int t=a*a;
+printf("%d is the square of %d",t,a);
+}
