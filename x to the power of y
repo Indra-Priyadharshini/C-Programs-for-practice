@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(void) {
+	// your code goes here
+int base,ex;
+int value=1;
+scanf("%d %d",&base,&ex);
+while(ex!=0)
+{
+    value=value*base;  // 2 to the power of 3 =2*2*2
+    --ex;
+}
+printf("Answer=%d",value);
+return 0;
+}
