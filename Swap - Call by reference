@@ -1,0 +1,19 @@
+void swap(int *,int *);
+int main()
+{
+    int a,b;
+    scanf("%d %d",&a,&b);
+    swap(&a,&b);
+    printf("\na=%d",a);
+     printf("\nb=%d",b);
+}
+void swap(int *x, int *y)
+{
+    int t;
+    t=*x;
+    *x=*y;
+    *y=t;
+     printf("\nx=%d",*x);
+     printf("\ny=%d",*y);
+   // printf(“%d”,a); - not allowed
+}
