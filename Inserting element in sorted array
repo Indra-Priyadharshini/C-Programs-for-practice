@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main()
+{
+   // Read some array of size n, integer, position to insert an integer
+   int a[20],i,n,p,x;
+   scanf("%d",&n); //size of array
+   for(i=0;i<n;i++)
+    scanf("%d",&a[i]); // array elements
+   //scanf("%d",&p); //pos
+   scanf("%d",&x); //new val
+   for(i=0;i<n;i++)
+   {
+       if(x<a[i])
+       {
+           p=i;
+           break;
+       }
+      //else
+      //{
+        //  p=i+1;
+      //}
+   }
+   for(i=n;i>=p;i--)
+   {
+    a[i]=a[i-1]; 
+   }
+   a[p]=x;
+   for(i=0;i<=n;i++)
+    printf("\t%d",a[i]);
+   return 0;
+}
