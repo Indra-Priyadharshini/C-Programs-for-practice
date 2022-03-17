@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include<string.h>
+int main(void) {
+	// your code goes here
+	char s[50]="fgh Appl hello App Apple";
+	char s1[20]="intAer",*t;
+	printf("%d",strspn(s,s1));
+	printf("\n%s",strstr(s,s1));
+	t=strpbrk(s,s1);
+	if(t)
+	printf("%c",*t);
+	else
+	printf("Characrer not found");
+	printf("\n%s",strchr(s,'A'));
+	printf("\n%s",strrchr(s,'A'));
+	return 0;
+	
+}
