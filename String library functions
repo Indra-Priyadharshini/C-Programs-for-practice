@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<string.h> //Library functions
+int main()
+{
+    char s1[20],s2[20],s3[20];
+    gets(s1); // read string from the user until a new line is found
+    gets(s2); 
+    printf("\nS1=%s",s1);
+    printf("\nS2=%s",s2);
+    strcpy(s3,s1); ‘\0’
+    printf("\nS3 after copying S1=%s",s3);
+    strcat(s3,s2);
+    printf("\nS3 after Concatenating S2=%s",s3);
+    printf("\nLength of String 1 is %d",strlen(s1));
+    printf("\nLength of String 2 is %d",strlen(s2));
+    printf("\nLength of String 2 is %d",strlen(s3));
+        return 0;
+}
+
+
