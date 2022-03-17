@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(void) {
+	// your code goes here
+	char letter;
+	scanf("%c",&letter);
+	printf("\n Character is %c",letter);
+	printf("\n%d",letter);
+	if(letter=='a'||letter=='e'||letter=='i'|| letter=='o'||letter=='u')  //&& - logical And || - Logical OR ! - Not
+	{
+	    printf("\nVowel");
+	}
+	else
+	{
+	    printf("\nConsonant");
+	}
+	
+	return 0;
+}
