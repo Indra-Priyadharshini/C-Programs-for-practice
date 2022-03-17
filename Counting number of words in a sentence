@@ -1,0 +1,30 @@
+// counting number of words in a sentence
+#include<stdio.h>
+//int flag=0;
+int countWords(char*);
+int main()
+{
+    char s1[30],s2[30];
+    fgets(s1,30,stdin);
+    int w=countWords(s1);
+    printf("%d",w);
+    return 0;
+}
+int countWords(char *s)
+{
+    int r=1;
+   int flag=0;
+    while(*s)
+    {
+        if(*s==' '||*s=='\n'||*s=='\t')
+        flag=1;
+        else if(!(flag==0))
+        {
+        flag=0;
+        r++;
+        }
+    s++;
+    }
+    
+    return r;
+}
