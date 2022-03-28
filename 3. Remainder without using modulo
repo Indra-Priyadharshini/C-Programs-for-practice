@@ -1,0 +1,16 @@
+#include <stdio.h>
+void findRem(int,int);
+int main()
+{
+        int n1,n2;
+        printf("Enter two numbers:\n");
+        scanf("%d %d",&n1,&n2);
+        findRem(n1,n2);
+}
+void findRem(int n1, int n2)
+{
+        int quotient,reminder;
+        quotient = n1/n2;
+        reminder = n1 - quotient * n2;
+        printf("Remainder = %d\n",reminder);
+}
