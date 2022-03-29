@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main(void) {
+	// your code goes here
+	int units;
+	float amount;
+	printf("\nEnter number of units consumed");
+	scanf("%d",&units);
+	if(units<=200)
+	amount=units*1;
+	else if(units>200 && units<=300)
+	amount=200+(units-200)*1.5;
+	else
+	amount=200+(100*1.5)+(units-300)*2;
+	printf("\n Bill Amount=Rs.%f",amount);
+	return 0;
+}
