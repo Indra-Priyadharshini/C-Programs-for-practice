@@ -26,31 +26,31 @@ int main(void) {
         case 1:
         printf("\n Enter Length of the side");
         int a;
-        scanf("%d",&a);
+        scanf("%d ",&a);
         printf("\n Volume of Cube is %d",volCube(a));
         break;
         case 2:
         printf("\n Enter Length, height and width of cuboid");
         int l,w,h;
-        scanf("%d %d %d",&l,&w,&h);
+        scanf("%d %d %d ",&l,&w,&h);
         printf("\n Volume of Cuboid is %d",volCuboid(l,w,h));
         break;
         case 3:
         printf("\n Enter the radius of sphere");
         int r;
-        scanf("%d",&r);
+        scanf("%d ",&r);
         printf("\n Volume of Sphere is %d",volSphere(r));
         break;
         case 4:
         printf("\n Enter the radius and height of cylinder");
         int rc,hc;
-        scanf("%d %d",&rc,&hc);
+        scanf("%d %d ",&rc,&hc);
         printf("\n Volume of Cylinder is %d",volCylinder(rc,hc));
         break;
         case 5:
         printf("\n Enter the radius and height of cone");
         int rc1,hc1;
-        scanf("%d %d",&rc1,&hc1);
+        scanf("%d %d ",&rc1,&hc1);
         printf("\n Volume of Cone is %d",volCone(rc1,hc1));
         break;
     }
