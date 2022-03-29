@@ -1,0 +1,83 @@
+#include <stdio.h>
+
+int volCube(int);
+int volCuboid(int,int,int);
+int volSphere(int);
+int volCylinder(int,int);
+int volCone(int,int);
+
+int main(void) {
+	// your code goes here
+	char opt;
+	int choice; 
+	do
+	{
+	printf("\n 1.Volume of Cube");
+    printf("\n2.Volume of Cuboid");
+    printf("\n3.Volume of Sphere");
+    printf("\n4.Volume of Cylinder");
+    printf("\n5.Volume of Cone");
+    printf("\n Enter your choice of shape");
+    
+    scanf("%d",&choice);
+    
+    switch(choice)
+    {
+        case 1:
+        printf("\n Enter Length of the side");
+        int a;
+        scanf("%d",&a);
+        printf("\n Volume of Cube is %d",volCube(a));
+        break;
+        case 2:
+        printf("\n Enter Length, height and width of cuboid");
+        int l,w,h;
+        scanf("%d %d %d",&l,&w,&h);
+        printf("\n Volume of Cuboid is %d",volCuboid(l,w,h));
+        break;
+        case 3:
+        printf("\n Enter the radius of sphere");
+        int r;
+        scanf("%d",&r);
+        printf("\n Volume of Sphere is %d",volSphere(r));
+        break;
+        case 4:
+        printf("\n Enter the radius and height of cylinder");
+        int rc,hc;
+        scanf("%d %d",&rc,&hc);
+        printf("\n Volume of Cylinder is %d",volCylinder(rc,hc));
+        break;
+        case 5:
+        printf("\n Enter the radius and height of cone");
+        int rc1,hc1;
+        scanf("%d %d",&rc1,&hc1);
+        printf("\n Volume of Cone is %d",volCone(rc1,hc1));
+        break;
+    }
+    printf("\n Do you want to continue? y/n\n");
+    scanf("%c",&opt);
+    printf("opt=%c",opt);
+	}
+	while(opt=='y');
+	return 0;
+}
+int volCube(int a)
+{
+    return (a*a*a);
+}
+int volCuboid(int g,int h,int i)
+{
+    return (g*h*i);
+}
+int volSphere(int r)
+{
+    return (4/3*3.14*r*r*r);
+}
+int volCylinder(int m,int n)
+{
+    return(3.14*m*m*n);
+}
+int volCone(int m1,int n1)
+{
+    return(3.14*m1*m1*n1)/3;
+}
