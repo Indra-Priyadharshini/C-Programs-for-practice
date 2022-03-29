@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include<ctype.h>
+#include<stdlib.h>
+void calcSum(int*,int);
+void findBig(int*,int);
+void findSmall(int*,int);
+int main()
+{
+    int n,i;
+    printf("\n Enter number of elements\n");
+    scanf("%d",&n);
+    int a[n];
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    calcSum(a,n);
+    findBig(a,n);
+    findSmall(a,n);
+    return 0;
+}
+void calcSum(int *p, int n)
+{
+    int sum=0;
+    for(int i=0;i<n;i++)
+    sum+=*(p+i);
+    printf("\n Sum of Array=%d",sum);
+}
+void findBig(int *p1, int n)
+{
+    int big=*(p1+0);
+    for(int i=0;i<n;i++)
+    if(*(p1+i)>big)
+    big=*(p1+i);
+    printf("\n Big=%d",big);
+}
+void findSmall(int *p2, int n)
+{
+    int small=*(p2+0);
+    for(int i=0;i<n;i++)
+    if(*(p2+i)<small)
+    small=*(p2+i);
+    printf("\n Small=%d",small);
+}
