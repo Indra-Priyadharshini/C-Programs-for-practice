@@ -1,0 +1,38 @@
+/* Encrypt the Text - skip characters by 3 */
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+char opr(char c)
+{
+    if (isupper(c))
+    {
+        int num = (int)c - 65;
+        num = (num + 3) % 26;
+        c = (char)(num + 65);
+        return c;
+    }
+    else if (islower(c))
+    {
+        int num = (int)c - 97;
+        num = (num + 3) % 26;
+        c = (char)(num + 97);
+        return c;
+    }
+    else return c;
+}
+
+void jumble(char *s)
+{
+    for (int i=0; *(s + i)!='\0'; i++) printf("%c", opr(*(s + i)));
+}
+
+int main()
+{
+    char s[100];
+    fgets(s, 100, stdin);
+    //s[strlen(s) - 1]='\0';
+    
+    jumble(s);
+    return 0;
+}
