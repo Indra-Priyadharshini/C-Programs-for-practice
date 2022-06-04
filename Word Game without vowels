@@ -1,0 +1,50 @@
+*/Sam and Ram are playing a word game. The game is to build words with less number of vowels. 
+Each time a word is told, score is raised to the length of the word. Vowels in the words are to be omitted while calculating length of the word. 
+Read 'n' strings as input from sam and ram. Calculate and display the winner name who has the high score using a C program.*/
+
+/*Example:
+n=3
+Sam: India, Japan, Xmas – Score: 2+3+3=5
+Ram: Retina, eyeball, myophia – Score: 3+4+4=11
+Winner Name: Ram*/
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main()
+{
+    int n, ram=0, sam=0;
+    scanf("%d\n", &n);
+    for (int i=0; i<n; i++)
+    {
+        char s[100];
+        fgets(s, 100, stdin);
+        s[strlen(s)-1] = '\0';
+        for (int i=0; s[i]!='\0'; i++)
+        {
+            char c = tolower(s[i]);
+            if (c!='a' && c!='e' && c!='i' && c!='o' && c!='u')
+                sam++;
+        }
+    }
+    
+    for (int i=0; i<n; i++)
+    {
+        char s[100];
+        fgets(s, 100, stdin);
+        if (i!=n-1) s[strlen(s)-1] = '\0';
+        for (int i=0; s[i]!='\0'; i++)
+        {
+            char c = tolower(s[i]);
+            if (c!='a' && c!='e' && c!='i' && c!='o' && c!='u')
+                ram++;
+        }
+    }
+    
+    //printf("Ram : %d\nSam : %d\n", ram, sam);
+    
+    if (ram>sam) printf("Winner is Ram");
+    else printf("Winner is Sam");
+    return 0;
+}
