@@ -1,0 +1,28 @@
+/*Given an unsorted array of 'n' elements and an element x, search x in given array. Write recursive C code for this. If element is not present, return -1
+Sample I/O:
+5
+12 34 54 2 3
+3
+Element 3 is present at index 4*/
+
+include <stdio.h>
+
+int finder(int arr[], int x, int n)
+{
+    if (n == 0) return -1;
+    if (arr[n-1] == x) return n-1;
+    return finder(arr, x, n--);
+}
+
+int main()
+{
+    int n, x, pos;
+    scanf("%d", &n);
+    int arr[n];
+    for (int i=0; i<n; i++) scanf("%d", arr + i);
+    scanf("%d", &x);
+    pos = finder(arr, x, n);
+    if (pos==-1) printf("-1\n");
+    else printf("Element %d is present at index %d", x, pos);
+    return 0;
+}
