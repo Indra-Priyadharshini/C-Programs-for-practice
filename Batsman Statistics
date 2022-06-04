@@ -1,0 +1,40 @@
+{2,1,0,0,4,6,0,1,1,4,4,4,1,1,0,0,4,4,0,0,2,2,6,6} is the runs scored by a batsman for 4 overs in an ODI. Write a C program to print 
+1) the number of dot balls he faced 2) the number of single runs 3) the number of 2s runs 4) the number of boundaries 5) the number of sixes and
+6) the total number of runs he scored. 
+The scores of the same batsman in the other matches of the series is {40,55,20,5}. Calculate and display the average of runs he has scored in the series.*/
+
+#include <stdio.h>
+int main()
+{
+    int num, dot=0, o=0, t=0, f=0, s=0;
+    double sum=0, count=0;
+    while(1)
+    {
+        scanf("%d", &num);
+        sum+=num;
+        if (num==0) dot++;
+        else if (num==1) o++;
+        else if (num==2) t++;
+        else if (num==4) f++;
+        else if (num==6) s++;
+        
+        char c;
+        scanf("%c", &c);
+        if (c=='\n') break;
+    }
+    
+    while(scanf("%d", &num) != EOF)
+    {
+        sum += num;
+        count ++;
+    }
+    
+    
+    printf("Dot Balls - %d\n", dot);
+    printf("1s - %d\n", o);
+    printf("2s - %d\n", t);
+    printf("4s - %d\n", f);
+    printf("6s - %d\n", s);
+    printf("Average Runs in Series - %0.1f", sum/(count+1));
+    return 0;
+}
