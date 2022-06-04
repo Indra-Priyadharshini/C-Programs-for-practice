@@ -1,0 +1,51 @@
+/*Nisha visits a store to buy flowers. She sees a price list of ‘n’ flowers. She wanted to buy two flowers with all her money in hand. 
+Using a C program help her to choose two flowers such that the sum of prices of the two flowers is equal to her money. 
+Read Nisha’s money and flower price list as inputs and Print the price of the two chosen flowers as output. 
+Choose relevant data type for input and output variables.*/
+
+#include <stdio.h>
+int main()
+{
+    int n, m;
+    scanf("%d%d", &m, &n);
+    
+    int prices[n], ind[n];
+    
+    for (int i=0; i<n; i++)
+    {
+        scanf("%d", prices + i);
+        *(ind + i) = i + 1;
+    }
+    
+    for (int i=0; i<n-1; i++)
+    {
+        for (int j=0; j<n-i-1; j++)
+        {
+            if (prices[j]>prices[j+1])
+            {
+                prices[j] += prices[j+1];
+                prices[j+1] = prices[j] - prices[j+1];
+                prices [j] -= prices[j+1];
+                
+                ind[j] += ind[j+1];
+                ind[j+1] = ind[j] - ind[j+1];
+                ind[j] -= ind[j+1];
+            }
+        }
+    }
+      
+    int x=0, y=n-1;
+    while (y - x)
+    {
+        if (prices[x] + prices[y] == m)
+        {
+            printf("Flower %d - %d Flower %d - %d", ind[x], prices[x], ind[y], prices[y]);
+            return 0;
+        }
+        else if (prices[x] + prices[y] < m) x++;
+        else y--;
+    }
+    
+    printf("Insufficient Money!");
+    return 0;
+}
