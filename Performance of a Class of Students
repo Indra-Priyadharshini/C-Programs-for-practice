@@ -1,0 +1,53 @@
+/*Assume there is a class – Class1. In class 1, there are ‘n’ students studying ‘m’ subjects. 
+Use 2-D integer array in ‘C’ to store the marks of each student.
+Perform the class wise subject marks comparison and print the subject wise highest and lowest marks of Class1. 
+Also, print the student wise highest and lowest marks in Class1.*/
+#include <stdio.h>
+#include <math.h>
+
+int max(int *arr, int n)
+{
+    int res=-10000;
+    for (int i=0; i<n; i++) if (arr[i]>res) res = arr[i];
+    return res;
+}
+
+int min(int *arr, int n)
+{
+    int res=10000;
+    for (int i=0; i<n; i++) if (arr[i]<res) res = arr[i];
+    return res;
+}
+
+int main()
+{
+    int n, m;
+    scanf("%d%d", &n, &m);
+    //printf("%d\t%d", n, m);
+    int arr[n][m];
+    for (int i=0; i<n; i++)
+    {
+        for (int j=0; j<m; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+    
+    for (int i=0; i<n; i++)
+    {
+        int maxi = max(arr[i], m), mini = min(arr[i], m);
+        printf("The maximum and minimum mark of student %d: %d %d", i+1, maxi, mini);
+        if (i==0 || i==1) printf(" \n");
+        else printf("\n");
+    }
+    
+    int trp[m][n];
+    for (int i=0; i<n; i++) for (int j=0; j<m; j++) trp[j][i] = arr[i][j];
+
+    for (int i=0; i<m; i++)
+    {
+        int maxi = max(trp[i], n), mini = min(trp[i], n);
+        printf("The maximum and minimum mark of subject %d: %d %d", i+1, maxi, mini);
+        if (i!=m-1) printf("\n");
+    }
+}
