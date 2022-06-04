@@ -1,0 +1,60 @@
+/*Implement the solution using a C Program. A Book Shelf has to be arranged such that 
+the books with more number of pages are placed first in the shelf followed by books with less number of pages. 
+That book shelf can store ‘n’ books. 
+Read the value for n and number of pages for each book.
+1) Display the order in which books are arranged in the shelf.
+Example: if n=5, Book1=120, Book2=30, Book3=98, Book4=873 Book5=500
+The order is 873 500 120 98 30
+2) Find the book which has least number of pages. 
+3) Find the book with maximum number of pages
+4) Find the number of books which has odd number of pages and even number of pages.
+Use functions and pointers to implement the solution.*/
+#include <stdio.h>
+
+void printdetails(int arr[], int copy[], int n)
+{
+    for (int i=0; i<n; i++) 
+    {
+        printf("%d", *(arr + i));
+        if (i!=n-1) printf(" ");
+    }
+    printf("\nLeast =%d\nMaximum = %d\n", arr[n-1], arr[0]);
+    printf("Odd List:\n");
+    for (int i=0; i<n; i++) 
+        if (*(copy+i)%2==1) 
+            printf("%d\n", *(copy+i));
+    printf("Even List:\n");
+    for (int i=0; i<n; i++) 
+        if (*(copy+i)%2==0) 
+            printf("%d\n", *(copy+i));
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n], copy[n];
+    
+    for (int i=0; i<n; i++) 
+    {
+        scanf("%d", arr + i);
+        copy[i]=arr[i];
+    }
+    
+    for (int i=0; i<n-1; i++)
+    {
+        for (int j=0; j<n-i-1; j++)
+        {
+            if (arr[j]<arr[j+1])
+            {
+                arr[j] += arr[j+1];
+                arr[j+1] = arr[j] - arr[j+1];
+                arr[j] -= arr[j+1];
+            }
+        }
+    }
+    
+    printdetails(arr, copy, n);
+
+    return 0;
+}
