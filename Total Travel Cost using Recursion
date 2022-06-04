@@ -1,0 +1,26 @@
+/*Soniya works in a city, distant from her native.  She visits her native frequently atleast once a month. The travel cost of visiting her native is Rs. 1500. 
+Get the input from user, the no.of times the visit has been made to native in the year 2021.  Calculate and print the total travel cost of the year 2021.
+Define a recursive function to calculate the travel cost. Let the function takes two arguments 1) no.of visits 2)cost of visit.
+Do not use * (asheriks) operator for multiplying values, instead use recursion to calculate the total cost and print the result in main function. 
+Sample Input:
+5
+Sample Output:
+Rs.7500*/
+#include <stdio.h>
+
+int Total_Cost(int n)
+{
+    if (n == 1) return 1500;
+    return 1500 + Total_Cost(n-1);
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    
+    int res = Total_Cost(n);
+    
+    printf("Rs.%d", res);
+    return 0;
+}
