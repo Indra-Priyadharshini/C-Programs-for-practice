@@ -1,0 +1,82 @@
+/*Write a C program to implement the below problem. The tariff of Airtel Broadband is described below.
+Payment Types: Monthly, Half-Yearly and Annual
+Plan Type: VIP, Premium,Basic and Student 
+Read name of the customer, the type of plan, and type of payment and calculate the bill amount accordingly.  
+Add 18% of GST to the Rental Value for calculating the bill amount. 
+Also read number of referrals done by the customer and number of times late payments are done. 
+Calculate discount on the bill amount based on the conditions below,
+Customer is eligible to get the discount only if there are no previous late payments.
+If the customer has done more than 10 referrals, he/she gets an offer of 10% discount in Bill Amount.
+Instructions:
+1. Define a Structure Customer_Bill with the following data members - name of the customer, the type of plan, type of payment, number of referrals, 
+number of late payments. 
+2.Define the structure variable as array to read the values for n customers.
+3. Calculate Bill Amount, Discount and Net Payable amount after discount according to the specified conditions.
+4. Define a function to display the customer bill with Customer Name, Plan Type, Payment Type, Referrals, Late Payments,
+Bill Amount, Discount and Net Payable Amount. (Pass structure variable and other relevant arguments needed)*/
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+struct Customer_Bill
+{
+	int nor, nolp;
+	char name[100], typlan[100], typay[100];
+
+};
+
+void print_Bill(struct Customer_Bill cb[], int n)
+{
+	int vm = 3999, vh = 22194, va = 40790, pm = 1499, ph = 8319, pa = 15290, bm = 799, bh = 4434, ba = 8150, sm = 800, sh = 3499, sa = 6499;
+	for (int i=0; i<n; i++)
+	{
+		float disc = 0.00, amt, np;
+		printf("Name=%s \n", cb[i].name);
+		printf("Plan Type=%s \n", cb[i].typlan);
+		printf("Payment Type= %s \n", cb[i].typay);
+		printf("Referrals=%d \n", cb[i].nor);
+		printf("Late Payments=%d \n", cb[i].nolp);
+
+		if (!strcmp("VIP", cb[i].typlan) && !strcmp("Monthly", cb[i].typay)) amt = vm * 12 * 1.18;
+		else if (!strcmp("VIP", cb[i].typlan) && !strcmp("Half-yearly", cb[i].typay)) amt = vh * 2 * 1.18;
+		else if (!strcmp("VIP", cb[i].typlan) && !strcmp("Annual", cb[i].typay)) amt = va * 1.18;
+		else if (!strcmp("Premium", cb[i].typlan) && !strcmp("Monthly", cb[i].typay)) amt = pm * 12 * 1.18;
+		else if (!strcmp("Premium", cb[i].typlan) && !strcmp("Half-yearly", cb[i].typay)) amt = ph * 2 * 1.18;
+		else if (!strcmp("Premium", cb[i].typlan) && !strcmp("Annual", cb[i].typay)) amt = pa * 1.18;
+		else if (!strcmp("Basic", cb[i].typlan) && !strcmp("Monthly", cb[i].typay)) amt = bm * 12 * 1.18;
+		else if (!strcmp("Basic", cb[i].typlan) && !strcmp("Half-yearly", cb[i].typay)) amt = bh * 2 * 1.18;
+		else if (!strcmp("Basic", cb[i].typlan) && !strcmp("Annual", cb[i].typay)) amt = ba * 1.18;
+		else if (!strcmp("Student", cb[i].typlan) && !strcmp("Monthly", cb[i].typay)) amt = sm * 12 * 1.18;
+		else if (!strcmp("Student", cb[i].typlan) && !strcmp("Half-yearly", cb[i].typay)) amt = sh * 2 * 1.18;
+		else if (!strcmp("Student", cb[i].typlan) && !strcmp("Annual", cb[i].typay)) amt = sa * 1.18;
+		else 
+		{
+			printf("Not Working!!!");
+			exit(0);
+		}
+
+		if (cb[i].nor>10 && cb[i].nolp==0) disc = 0.1 * amt;
+
+		np = amt - disc;
+
+		printf("Amount=%0.2f \n", amt);
+		printf("Discount=%0.2f \n", disc);
+		printf("Net Payable=%0.2f\n", np);
+	}
+}
+
+int main()
+{
+	int n;
+	scanf("%d\n", &n);
+	struct Customer_Bill arr[n];
+
+	for (int i=0; i<n; i++)
+	{
+		scanf("%s %s %s %d %d", arr[i].name, arr[i].typlan, arr[i].typay, &arr[i].nor, &arr[i].nolp);
+	}
+
+	print_Bill(arr, n);
+	return 0;
+}
