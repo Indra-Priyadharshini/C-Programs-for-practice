@@ -1,0 +1,65 @@
+/*Mr. Roy is fond of playing word games with children. He gives a keyword to children and asks them to build words based on the keyword. 
+He gives a chocolate to children who build correct words with keyword. 
+If the keyword is sun, children can build words like sun flower, sunlight, sunburn, tsunami, sundial etc., 
+Read the keyword and set of words built by the children as input. Assume there are ‘n’ children, 
+find out how many of them got chocolates from Mr.Roy using a C program. Use pointers to access the strings stored.*/
+
+/*Sample Input:
+sun
+4
+sunflower
+sunny
+india 
+elephant
+Sample Output:
+2*/
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[100];
+    fgets(s, 100, stdin);
+    s[strlen(s)-1]='\0';
+    
+    char *p1 = s;
+    
+    int n, res=0;
+    scanf("%d\n", &n);
+    
+    for (int i=0; i<n; i++)
+    {
+        char w[100];
+        fgets(w, 100, stdin);
+        w[strlen(w)-1] = '\0';
+        
+        char *p2 = w;
+        
+        for (int j=0; *(p2 + j + strlen(s) - 1)!='\0'; j++)
+        {
+            int inc=0, flag = 1;
+            for (int k=0; *(p1 + k)!='\0'; k++)
+            {
+                char a = *(p2 + j + inc), b = *(p1 + k);
+                //printf("%c\t%c\n", a, b);
+                if (a == b)
+                {
+                    inc++;
+                }
+                else
+                {
+                    flag=0;
+                    break;
+                }
+            }
+            if (flag)
+            {
+                res++;
+                break;
+            }
+        }
+    }
+    printf("%d", res);
+    return 0;
+}
