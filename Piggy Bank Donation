@@ -1,0 +1,33 @@
+/*Assume there are five children named A,B,C,D and E in a family. All of them have saved money in a piggy bank.
+Their school voluntary donation camp is looking for some money Rs. X.
+Parents have told the children that any three of them can offer money if the sum of any three of their money is equal to Rs.X.
+Read the savings amount of children in an array and donation amount in X variable. Find out the combination of children, whose sum of money is equal to X. 
+Print, the respective children names and their savings amount. If the combination does not exist, print “Donation can’t be paid”. */
+
+#include <stdio.h>
+
+int main()
+{
+    int don, a, b, c, d, e, count=-1;
+    scanf("%d%d%d%d%d%d", &don, &a, &b, &c, &d, &e);
+    int com[10], child[] = {a, b, c, d ,e};
+    
+    for (int i=0; i<3; i++)
+    {
+        for (int j=i+1; j<4; j++)
+        {
+            for (int k=j+1; k<5; k++)
+            {
+                if (don == child[i] + child[j] + child[k])
+                {
+                    printf("%d\n%d\n%d", child[i], child[j], child[k]);
+                    return 0;
+                }
+            }
+        }
+    }
+    
+    printf("Donation can't be paid");
+    return 0;
+
+}
