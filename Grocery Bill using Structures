@@ -1,0 +1,67 @@
+/*Design an application for grocery store using a C program. User enters the product number, price of the ‘n’ product items no.of units bought on each item and
+product name. Calculate the price amount for each item and total bill amount. If the total amount is in the range of 1000 to 2000, give a discount of 10%. 
+If the total amount is more than 2000, give a discount of 20%. Otherwise, no discount is given. 
+Print the grocery bill with Product no, Product name, product price, no.of units, amount of each product items, total amount, discount and net amount to be paid. 
+Important instructions to be followed:
+1. Use a structure to define the attributes of product - Product no, Product price, Product units, Product name. 
+2. Define the structure variable in the form of array and read values for 'n' products. 
+3. Define a function for printing the bill by passing structre variable as argument.
+Sample Input:
+4
+1 15.50 10 Pencil
+2 200 5 Bag
+3 130.00 4 Pen
+4 65.50 6 Scribble Pad
+Sample Output:
+1 Pencil 15.50 10 155.00
+2 Bag 200.00 4  800.00
+3 Pen 130.00 4 520.00
+4 Scribble Pad 65.50 6 393.00
+Total Amount:2068.00
+Discount:413.60
+Net Payable:1654.40*/
+
+
+#include <stdio.h>
+#include <string.h>
+
+struct product
+{
+    int no, units;
+    float price;
+    char name[100];
+};
+
+void printBill(struct product p[], int n)
+{
+    float sum = 0, disc = 0;
+    for (int i=0; i<n; i++)
+    {
+        float total = p[i].units * p[i].price;
+        printf("%d%s %0.2f %d %0.2f\n", p[i].no, p[i].name, p[i].price, p[i].units, total);
+        sum += total;
+    }
+    
+    if (sum>2000) disc = 0.2 * sum;
+    else if (sum>=1000) disc = 0.1 * sum;
+    
+    printf("Total Amount:%0.2f\n", sum);
+    printf("Discount:%0.2f\n", disc);
+    printf("Net Payable:%0.2f", sum - disc);
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    struct product p[n];
+    for (int i=0; i<n; i++)
+    {
+        scanf("%d %f %d", &p[i].no, &p[i].price, &p[i].units);
+        fgets(p[i].name, 100, stdin);
+        if (i!=n-1) p[i].name[strlen(p[i].name)-1] = '\0';
+    }
+    
+    printBill(p, n);
+    return 0;
+}
