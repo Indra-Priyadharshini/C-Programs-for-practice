@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[100];
+    fgets(s, 100, stdin);
+    
+    char *broke = strtok(s, " ");
+    
+    while (broke!=NULL)
+    {
+        printf("%s\n", broke);
+        broke = strtok(NULL," ");
+    }
+    return 0;
+}
