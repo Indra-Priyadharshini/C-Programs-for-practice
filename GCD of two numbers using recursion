@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <math.h>
+
+int gcd(int a, int b)
+{
+    int x = fmax(a,b), y=fmin(a,b);
+    if (x%y==0) return y;
+    else return gcd(y, x%y);
+}
+
+int main()
+{
+    int a, b;
+    scanf("%d%d", &a, &b);
+    
+    int res = gcd(a,b);
+    printf("%d", res);
+    
+    return 0;
+}
